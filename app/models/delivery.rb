@@ -1,9 +1,10 @@
 class Delivery < ApplicationRecord
-  module STATUS
-    PROCESSING = 0
-  end
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :zip_code, presence: true
+  validates :description, presence: true
 
-  def initial_status_change
-    self.status = STATUS::PROCESSING
+  def initial_status_change!
+    self.processing!
   end
 end

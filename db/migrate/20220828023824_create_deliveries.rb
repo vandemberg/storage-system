@@ -5,8 +5,6 @@ class CreateDeliveries < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :zip_code
       t.text :description
-      t.date :estimated_time
-      t.integer :status, default: 0
 
       t.timestamps
     end
