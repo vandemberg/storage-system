@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Deliveries", type: :request do
   describe "POST /api/v1/deliveries" do
+    before(:each) do
+      create(:car)
+    end
+
     let(:delivery_params) {
       {
         delivery: build(:delivery).attributes
@@ -17,7 +21,7 @@ RSpec.describe "Deliveries", type: :request do
 
         expect(response).to have_http_status(:created)
         expect(data['delivery']['name']).to eq(delivery_params[:delivery]['name'])
-        expect(data['delivery']['status']).to eq('searching_car')
+        expect(data['delivery']['status']).to eq('packing')
         expect(Delivery.count).to eq(total_deliveries + 1)
       end
     end

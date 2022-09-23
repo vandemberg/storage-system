@@ -5,13 +5,23 @@ module Api
 
       def create
         delivery = Delivery.new(delivery_params)
+        car = ChooseCarAvailable.new.choose
+
+        raise CarNotFound.new if car.blank?
 
         if delivery.save
+          delivery.delivery_actions.create({
+            car_id: car.id,
+            estimated_at: Date.today + 4.days,
+          })
+
           serializer = DeliverySerializer.new(delivery)
           return render(json: { delivery: serializer.serialize }, status: :created)
         end
 
         render(json: { errors: delivery.errors }, status: :unprocessable_entity)
+      rescue CarNotFound
+        render(json: { errors: ["Não temos um carro disponível"], status: :unprocessable_entity })
       end
 
       private

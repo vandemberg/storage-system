@@ -18,6 +18,9 @@ class DeliverySerializer
   private
 
   def status
-    'searching_car'
+    delivery_action = @delivery.delivery_actions.last
+    return 'searching_car' if delivery_action.blank?
+
+    delivery_action.status
   end
 end
