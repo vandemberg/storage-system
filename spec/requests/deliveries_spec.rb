@@ -8,16 +8,34 @@ RSpec.describe "Deliveries", type: :request do
       }
     }
 
-    it "Should create a new delivery" do
-      total_deliveries = Delivery.count
+    context "with valid data" do
+      it "Should create a new delivery" do
+        total_deliveries = Delivery.count
 
-      post("/api/v1/deliveries", params: delivery_params)
-      data = JSON.parse(response.body)
+        post("/api/v1/deliveries", params: delivery_params)
+        data = JSON.parse(response.body)
 
-      expect(data['delivery']['name']).to eq(delivery_params[:delivery]['name'])
-      expect(data['delivery']['status']).to eq('searching_car')
-      expect(response).to have_http_status(:created)
-      expect(Delivery.count).to eq(total_deliveries + 1)
+        expect(response).to have_http_status(:created)
+        expect(data['delivery']['name']).to eq(delivery_params[:delivery]['name'])
+        expect(data['delivery']['status']).to eq('searching_car')
+        expect(Delivery.count).to eq(total_deliveries + 1)
+      end
+    end
+
+    context "with invalid data" do
+      it "without data" do
+        post("/api/v1/deliveries")
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
+      it "without empty values" do
+        invalid_params = delivery_params
+        invalid_params[:delivery]['name'] = nil
+
+        post("/api/v1/deliveries", params: invalid_params)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
   end
 end

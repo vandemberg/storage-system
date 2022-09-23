@@ -1,21 +1,29 @@
 module Api
   module V1
     class DeliveriesController < ApplicationController
+      before_action :empty_params, only: [:create]
+
       def create
         delivery = Delivery.new(delivery_params)
 
-        if delivery.save!
+        if delivery.save
           serializer = DeliverySerializer.new(delivery)
-          render(json: { delivery: serializer.serialize }, status: :created)
-        else
-          render(json: { errors: delivery.errors }, stauts: :unprocessable_entity)
+          return render(json: { delivery: serializer.serialize }, status: :created)
         end
+
+        render(json: { errors: delivery.errors }, status: :unprocessable_entity)
       end
 
       private
 
       def delivery_params
         params.required(:delivery).permit(:name, :address, :zip_code, :description)
+      end
+
+      def empty_params
+        return if params[:delivery].present?
+
+        render({ json: { errors: ['missing param delivery'] }, status: :unprocessable_entity })
       end
     end
   end

@@ -24,3 +24,5 @@
 /coverage
 
 /config/database.yml
+
+.trunk
