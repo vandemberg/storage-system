@@ -108,7 +108,6 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.16.2)
-    mysql2 (0.5.4)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -128,6 +127,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
+    pg (1.4.3)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -219,7 +219,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2)
   faker
   interactor-rails (~> 2.0)
-  mysql2 (~> 0.5)
+  pg (~> 1.4)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.3, >= 7.0.3.1)
@@ -232,7 +232,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.1.1p18
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.7

@@ -28,3 +28,5 @@
 .trunk
 
 *.todo
+
+.env

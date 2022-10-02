@@ -11,14 +11,17 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_09_23_021242) do
-  create_table "cars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "cars", force: :cascade do |t|
     t.string "name"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "deliveries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "deliveries", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "zip_code"
@@ -27,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_021242) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "delivery_actions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "delivery_actions", force: :cascade do |t|
     t.bigint "car_id", null: false
     t.bigint "delivery_id", null: false
     t.datetime "delivery_at"
