@@ -5,16 +5,9 @@ module Api
 
       def create
         delivery = Delivery.new(delivery_params)
-        car = ChooseCarAvailable.new.choose
-
-        raise CarNotFound.new if car.blank?
 
         if delivery.save
-          delivery.delivery_actions.create({
-            car_id: car.id,
-            estimated_at: Date.today + 4.days,
-          })
-
+          NewDeliveryJob.perform_async(delivery.id)
           serializer = DeliverySerializer.new(delivery)
           return render(json: { delivery: serializer.serialize }, status: :created)
         end

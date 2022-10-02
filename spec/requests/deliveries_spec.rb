@@ -21,7 +21,8 @@ RSpec.describe "Deliveries", type: :request do
 
         expect(response).to have_http_status(:created)
         expect(data['delivery']['name']).to eq(delivery_params[:delivery]['name'])
-        expect(data['delivery']['status']).to eq('packing')
+        expect(data['delivery']['status']).to eq('searching_car')
+        expect(NewDeliveryJob.jobs.size).to eq(1)
         expect(Delivery.count).to eq(total_deliveries + 1)
       end
     end

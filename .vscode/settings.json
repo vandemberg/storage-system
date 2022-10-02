@@ -1,0 +1,10 @@
+{
+  "vscode-pets.petColor": "brown",
+  "vscode-pets.petSize": "medium",
+  "vscode-pets.petType": "rubber-duck",
+  "editor.snippets.codeActions.enabled": true,
+  "vscode-pets.position": "explorer",
+  "vscode-pets.theme": "none",
+  "oneDarkPro.editorTheme": "Tokyo",
+  "editor.snippetSuggestions": "inline"
+}

@@ -36,5 +36,8 @@ group :test do
   gem "shoulda-matchers", "~> 5.1"
   gem "database_cleaner-active_record", "~> 2.0"
   gem "simplecov", "~> 0.21.2", require: false
-  gem 'coveralls'
+  gem 'rspec-sidekiq'
 end
+
+# Gem to run Jobs/Workers
+gem "sidekiq", "~> 6.5"
