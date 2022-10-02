@@ -1,6 +1,7 @@
-class SetupCarTodelivery
+class SetupCarToDelivery
   def execute(delivery, car)
-    raise Exceptions::CarNotFound if car.blank?
+    raise CarNotFound if car.blank?
+
     if car.blank?
       delivery.unvailable_car!
       delivery.save
@@ -18,9 +19,9 @@ class SetupCarTodelivery
     delivery = Delivery.find(delivery_id)
     car = ChooseCarAvailable.new.choose
 
-    setup_car_delivery = SetupCarTodelivery.new
+    setup_car_delivery = SetupCarToDelivery.new
     setup_car_delivery.execute(delivery, car)
-  rescue Exceptions::CarNotFound
-    # Alert if the delivery was created with more than 5.days
+  rescue CarNotFound
+    Rails.logger.info "No car available..."
   end
 end
