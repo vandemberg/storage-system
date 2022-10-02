@@ -1,6 +1,7 @@
 rails=docker-compose exec web rails
 
 setup:
+	cp .env.example .env
 	${rails} db:create
 	${rails} db:migrate
 
@@ -14,3 +15,6 @@ test:
 
 bash:
 	${rails} c
+
+run:
+	docker-compose up

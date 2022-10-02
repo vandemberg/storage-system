@@ -1,24 +1,18 @@
-# README
+# Delivery system backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project to explore my skill with ruby on rails to edge. You can found things like:
 
-Things you may want to cover:
+- Serializer response data
+- Design Patterns like Factory, Strategy and State
+- Clean Architecture and UseCases
+- Background jobs with SIDEKIQ
+- RabbitMQ publisher to other services
+- RSPEC tests
 
-* Ruby version
+To run this project is easy:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1) `docker-compose up`
+2) `make setup`
+3) `make run`
+4) Access http://localhost:8000
+5) To run the tests `make test`
