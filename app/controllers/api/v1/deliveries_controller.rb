@@ -3,6 +3,7 @@ module Api
     class DeliveriesController < ApplicationController
       before_action :empty_params, only: [:create]
 
+      api :POST, '/v1/deliveries'
       def create
         delivery = Delivery.new(delivery_params)
 

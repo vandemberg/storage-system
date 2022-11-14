@@ -18,3 +18,6 @@ bash:
 
 run:
 	docker-compose up
+
+web:
+	docker-compose exec web bash

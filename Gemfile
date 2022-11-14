@@ -41,3 +41,5 @@ end
 
 # Gem to run Jobs/Workers
 gem "sidekiq", "~> 6.5"
+
+gem "apipie-rails", "~> 0.8.2"
