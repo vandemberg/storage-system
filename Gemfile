@@ -43,3 +43,5 @@ end
 gem "sidekiq", "~> 6.5"
 
 gem "apipie-rails", "~> 0.8.2"
+
+gem 'delivery_manager', path: 'engines/delivery_manager'

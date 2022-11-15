@@ -1,3 +1,9 @@
+PATH
+  remote: engines/delivery_manager
+  specs:
+    delivery_manager (0.1.0)
+      rails (>= 7.0.3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -220,6 +226,7 @@ DEPENDENCIES
   apipie-rails (~> 0.8.2)
   database_cleaner-active_record (~> 2.0)
   debug
+  delivery_manager!
   factory_bot_rails (~> 6.2)
   faker
   interactor-rails (~> 2.0)
